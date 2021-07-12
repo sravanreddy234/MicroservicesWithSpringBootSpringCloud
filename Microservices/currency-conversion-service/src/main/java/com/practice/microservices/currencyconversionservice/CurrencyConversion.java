@@ -2,18 +2,15 @@ package com.practice.microservices.currencyconversionservice;
 
 import java.math.BigDecimal;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-
 public class CurrencyConversion {
 	
-	@Id
+	//@Id
 	private Long id;
 	
-	@Column(name = "currency_from")
+	//@Column(name = "currency_from")
 	private String from;
 	
-	@Column(name = "currency_to")
+	//@Column(name = "currency_to")
 	private String to;
 	private BigDecimal quantity;
 	private BigDecimal conversionMultiple;
