@@ -26,13 +26,13 @@ public class CurrencyConversionController {
 		new RestTemplate().getForEntity("http://localhost:8000//currency-exchange/from/{from}/to/{to}",CurrencyConversion.class,uriVariables);
 		
 		CurrencyConversion currencyConversion = responseEntity.getBody();
-		return new CurrencyConversion(currencyConversion.getId(), from, to, quantity,currencyConversion.getConversionMultiple(),quantity.multiply(currencyConversion.getConversionMultiple()),currencyConversion.getEnvironment());
+		return new CurrencyConversion(currencyConversion.getId(), from, to, quantity,currencyConversion.getConversionMultiple(),quantity.multiply(currencyConversion.getConversionMultiple()),currencyConversion.getEnvironment()+ " " + "rest template");
 	}
 	
 	@GetMapping("currency-conversion-feign/from/{from}/to/{to}/quantity/{quantity}")
 	public CurrencyConversion calculateCurrencyConversionFeign(@PathVariable String from, @PathVariable String to, @PathVariable BigDecimal quantity) {	
 		CurrencyConversion currencyConversion = currencyExchangeProxy.retrieveExchangeValue(from, to);
-		return new CurrencyConversion(currencyConversion.getId(), from, to, quantity,currencyConversion.getConversionMultiple(),quantity.multiply(currencyConversion.getConversionMultiple()),currencyConversion.getEnvironment());
+		return new CurrencyConversion(currencyConversion.getId(), from, to, quantity,currencyConversion.getConversionMultiple(),quantity.multiply(currencyConversion.getConversionMultiple()),currencyConversion.getEnvironment()+ " " + "feign");
 	}
 
 }
